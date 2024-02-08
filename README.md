@@ -4,7 +4,6 @@
     fullName: String,
     email: String,
     password: String,
-    hasChatbotAccess: Boolean,
     isDeleted: Boolean
   }
 
@@ -12,14 +11,15 @@
   {
     text: String,
     sender: String,
-    recipient: String
+    recipient: String,
+    isDeleted: Boolean
   }
 
 # Instructions to run the project
   1. Clone the project.
   2. Navigate to the src directory using cd src.
   3. Install dependencies with npm install.
-  4. Set up environment variables.
+  4. Set up environment variables (DATABASE_URL, JWT_PRIVATE_KEY).
   5. Start the server with npm run start.
   6. Open a web browser and navigate to localhost:3000.
 

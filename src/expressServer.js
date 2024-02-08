@@ -1,8 +1,5 @@
 const {app} = require("./server");
 
-const jwt = require('jsonwebtoken');
-const messageModel = require('./app/models/messageModel')
-
 app.get('/', (req, res) => {
     res.render('login')
 });
