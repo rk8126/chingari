@@ -18,6 +18,7 @@ module.exports = {
              {
                 text: message.text,
                 contactName: String(message.sender?._id) === userId ? message.recipient?.fullName : message.sender?.fullName,
+                direction: String(message.sender?._id) === userId ? 'Sent': 'Received'
             }
         ))
         return messages
