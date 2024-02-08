@@ -1,0 +1,23 @@
+  <div id="login" class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <p class="text-danger">{{#if errorMessage}} {{errorMessage}} {{/if}}</p>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center">Sign Up</h5>
+        <form id="login-form" method="post" action="/user">
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" name="fullName" required class="form-control form-control-lg" id="fullName" placeholder="Enter Full Name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" name="email" required class="form-control form-control-lg" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="password" >Password</label>
+            <input type="password" name="password" required class="form-control form-control-lg" id="password" placeholder="Password">
+          </div>
+          <button type="submit" id="submitButton" class="btn btn-primary btn-lg btn-block mt-2">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>

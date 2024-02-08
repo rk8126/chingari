@@ -1,0 +1,55 @@
+<div>
+	{{>header}}
+	<div class="wrapper">
+    <div id="login" class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+        <form id="send-message">
+            <select required id="recipientId" class="mb-2">
+                <option value="">Select a user...</option>
+                {{#each users}}
+                <option value="{{this._id}}">{{this.fullName}}</option>
+                {{/each}}
+            </select>
+            <input required type="text" id="text" placeholder="Type your message...">
+            <button id="submitButton" type="submit" class="mt-2">Send</button>
+        </form>
+            {{#if messages}}
+        <div id="allMessages" class="mt-5">
+            <h2>All Messages</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Contact Name</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each messages}}
+                    <tr>
+                        <td>{{this.contactName}}</td>
+                        <td>{{this.text}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    {{/if}}
+    </div>
+</div>
+
+<script>
+    $("form#send-message").submit(function (e) {
+        e.preventDefault();
+        const form = document.getElementById('send-message')
+        const submitButton = form.querySelector('#submitButton')
+
+        const recipientId = form.querySelector('#recipientId').value
+        const text = form.querySelector('#text').value
+        axios.post(`/message`, {text, recipientId}).then(() => {
+            window.location.reload()
+        }).catch(function (error) {
+            const errorMessage = error?.response?.data?.message
+            submitButton.disabled = false
+            alert(`Error in sending message : ${errorMessage || error?.message}`)
+        });
+    });
+</script>
